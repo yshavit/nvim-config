@@ -20,3 +20,14 @@ map("v", ";", "g$", { desc = "Go to end of line" })
 
 -- In insert mode, Alt+- types an em dash
 vim.keymap.set("i", "<M-->", "—", { desc = "Insert em dash" })
+
+-- Select All
+map("n", "<C-a>", "ggVG", { desc = "Select All" })
+map("i", "<C-a>", "<ESC>ggVG", { desc = "Select All" })
+map("v", "<C-a>", "<ESC>ggVG", { desc = "Select All" })
+
+-- Select All and Yank to clipboard
+map("n", "<C-a>y", ":%y+<CR>", { desc = "Yank entire buffer" })
+map("i", "<C-a>y", "<ESC>:%y+<CR>", { desc = "Yank entire buffer" })
+map("v", "<C-a>y", "<ESC>:%y+<CR>", { desc = "Yank entire buffer" })
+map("c", "<C-a>y", "<C-c>:%y+<CR>", { desc = "Yank entire buffer" })
