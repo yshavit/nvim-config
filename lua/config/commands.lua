@@ -1,0 +1,26 @@
+vim.api.nvim_create_user_command("FormatJson", function(opts)
+  local cmd = string.format("%d,%d!jq .", opts.line1, opts.line2)
+  vim.cmd(cmd)
+end, { range = true, desc = "Format JSON in range" })
+
+vim.api.nvim_create_user_command("Scratch", function()
+  vim.cmd("enew")
+  vim.cmd("setlocal buftype=nofile")
+  vim.cmd("setlocal bufhidden=wipe")
+  vim.cmd("setlocal noswapfile")
+end, { desc = "Create a new scratch buffer" })
+
+vim.api.nvim_create_user_command("VScratch", function()
+  vim.cmd("vnew")
+  vim.cmd("setlocal buftype=nofile")
+  vim.cmd("setlocal bufhidden=wipe")
+  vim.cmd("setlocal noswapfile")
+end, { desc = "Create a new scratch buffer in a vertical split" })
+
+vim.api.nvim_create_user_command("Memdiff", function()
+  vim.cmd("Scratch")
+  vim.cmd("diffthis")
+  vim.cmd("VScratch")
+  vim.cmd("diffthis")
+  vim.cmd("wincmd h") -- Move cursor to left window
+end, { desc = "Diff current buffer against a new scratch buffer" })
