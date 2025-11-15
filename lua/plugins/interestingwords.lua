@@ -1,7 +1,15 @@
 return {
   "Mr-LLLLL/interestingwords.nvim",
-  lazy = false, -- make sure it loads immediately
+  event = "VeryLazy", -- load after startup is complete
   config = function()
-    require("interestingwords").setup({}) -- plugin sets up its defaults
+    require("interestingwords").setup({})
   end,
+  keys = {
+    -- Override LazyVim's <Leader>K mapping, which shows the man page for the cursor's word
+    {
+      "<Leader>K",
+      "<cmd>lua require('interestingwords').cancel_all_highlight()<cr>",
+      desc = "Clear interesting word highlights",
+    },
+  },
 }
