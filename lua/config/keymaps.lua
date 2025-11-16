@@ -8,10 +8,6 @@ local map = vim.keymap.set
 map("n", "<Tab>", "^", { desc = "Go to first non-blank character" })
 map("v", "<Tab>", "^", { desc = "Go to first non-blank character" })
 
--- Move by display lines instead of actual lines
-map({ "n", "v" }, "j", "gj", { desc = "Down (display line)" })
-map({ "n", "v" }, "k", "gk", { desc = "Up (display line)" })
-
 -- Map ; to $ (end of line) in normal and visual mode
 map("n", ";", "$", { desc = "Go to end of line" })
 map("v", ";", "$", { desc = "Go to end of line" })
