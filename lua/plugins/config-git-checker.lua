@@ -67,7 +67,7 @@ local function update_local_status()
         msg = msg .. "↓"
       end
       if git_status_cache.fetch_error then
-        msg = msg .. "!"
+        msg = msg .. "×"
       end
 
       git_status_cache.text = (msg ~= "" and header .. msg) or ""
@@ -94,6 +94,14 @@ end
 vim.api.nvim_create_user_command("NvimConfigRefresh", function()
   update_local_status()
 end, {})
+
+-- Auto-refresh when returning to Neovim
+vim.api.nvim_create_autocmd("VimResume", {
+  callback = function()
+    fetch_origin()
+    update_local_status()
+  end,
+})
 
 return {
   {
