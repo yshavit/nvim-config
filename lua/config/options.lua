@@ -4,3 +4,4 @@
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add,./spell/local.utf-8.add"
+vim.o.showcmd = false
