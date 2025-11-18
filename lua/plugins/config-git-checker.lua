@@ -91,6 +91,10 @@ local function git_status_component()
   return git_status_cache.text
 end
 
+vim.api.nvim_create_user_command("NvimConfigRefresh", function()
+  update_local_status()
+end, {})
+
 return {
   {
     "nvim-lualine/lualine.nvim",
