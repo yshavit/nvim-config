@@ -1,8 +1,8 @@
 local Job = require("plenary.job")
 
 -- TTLs in seconds
-local LOCAL_TTL = 20
-local FETCH_TTL = 600
+local LOCAL_TTL = 60
+local FETCH_TTL = 60 * 60
 
 -- cache table
 local git_status_cache = {
