@@ -1,0 +1,25 @@
+# local_enables
+#
+# This file controls which language-specific plugins and LazyVim extras
+# are loaded. Most plugins are enabled by default; only language-specific
+# features need to be explicitly enabled here.
+#
+# Format:
+#   - One feature per line
+#   - Lines starting with # are comments (with optional leading whitespace)
+#   - Empty lines are ignored
+#
+# Setup: Copy this file to 'local_enables' (without the .default extension)
+# and customize it for your machine.
+
+# --- Language Support ---
+
+# Uncomment the languages you want to enable on this machine:
+
+# go
+# typescript
+# rust
+
+# --- Custom Features ---
+# You can define custom features and check them in plugin configs using:
+#   enabled = require("config.local-features").is_enabled("your-feature")

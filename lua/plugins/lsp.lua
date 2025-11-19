@@ -1,8 +1,15 @@
+local features = require("config.local-features")
+
 return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = opts.servers or {}
+
+      -- Only configure gopls if Go feature is enabled
+      if not features.is_enabled("go") then
+        return opts
+      end
 
       -- Helper function to find .gopls-local by walking up directory tree
       local function find_gopls_local(start_path)

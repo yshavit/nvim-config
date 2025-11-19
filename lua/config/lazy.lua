@@ -14,10 +14,24 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load feature detection for conditional language support
+local features = require("config.local-features")
+
+-- Build language extras based on local_enables and local-feature-config.json
+local local_extras = {}
+for _, extra in ipairs(features.get_lazy_extras()) do
+  table.insert(local_extras, { import = extra })
+end
+-- Ensure at least one element so unpack() doesn't return nil
+if #local_extras == 0 then
+  table.insert(local_extras, {})
+end
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    unpack(local_extras),
     -- import/override with your plugins
     { import = "plugins" },
   },

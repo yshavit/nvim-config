@@ -1,0 +1,11 @@
+{
+  "go": {
+    "lazy-extra": "lazyvim.plugins.extras.lang.go"
+  },
+  "typescript": {
+    "lazy-extra": "lazyvim.plugins.extras.lang.typescript"
+  },
+  "rust": {
+    "lazy-extra": "lazyvim.plugins.extras.lang.rust"
+  }
+}
