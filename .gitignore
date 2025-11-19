@@ -8,3 +8,4 @@ foo.*
 data
 spell/*.spl
 local_enables
+lazy-lock.json
