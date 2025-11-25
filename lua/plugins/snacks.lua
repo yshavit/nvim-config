@@ -11,7 +11,8 @@ return {
               if vim.fn.mode():find("^[vV]") then
                 picker.list:select()
               end
-              local root = picker:cwd()
+              -- Get git root, or fall back to explorer cwd if not in a git repo
+              local root = Snacks.git.get_root(picker:cwd()) or picker:cwd()
               for _, item in ipairs(picker:selected({ fallback = true })) do
                 local abs_path = Snacks.picker.util.path(item)
                 -- Calculate relative path by stripping the root prefix, or use absolute if nil
