@@ -4,13 +4,13 @@
 --
 local map = vim.keymap.set
 
--- Map Tab to ^ (first non-blank character) in normal and visual mode
-map("n", "<Tab>", "^", { desc = "Go to first non-blank character" })
-map("v", "<Tab>", "^", { desc = "Go to first non-blank character" })
+-- Map Tab to ^ (first non-blank character) in normal and visual mode, using screen lines (factoring in soft wrapping)
+map("n", "<Tab>", "g^", { desc = "Go to first non-blank character" })
+map("v", "<Tab>", "g^", { desc = "Go to first non-blank character" })
 
 -- Map ; to $ (end of line) in normal and visual mode
-map("n", ";", "$", { desc = "Go to end of line" })
-map("v", ";", "$", { desc = "Go to end of line" })
+map("n", ";", "g$", { desc = "Go to end of line" })
+map("v", ";", "g$", { desc = "Go to end of line" })
 
 -- In insert mode, Alt+- types an em dash
 vim.keymap.set("i", "<M-->", "—", { desc = "Insert em dash" })
