@@ -5,11 +5,26 @@ return {
       latex = {
         enabled = false,
       },
+      heading = {
+        enabled = true,
+        icons = { "❱ ", "❯❯ ", "❯❯❯ ", "❯❯❯❯ ", "❯❯❯❯❯ ", "❯❯❯❯❯❯ " },
+      },
       code = {
-        language_pad = 2,
-        left_pad = 2,
+        width = "full",
         conceal_delimiters = false,
-        border = "thick",
+        langage_pad = 2,
+        language_border = "▄",
+        language_right = "██",
+        border = "thin",
+      },
+      checkbox = {
+        enabled = true,
+        checked = {
+          icon = "-  󰱒 ",
+        },
+        unchecked = {
+          icon = "-  󰄱 ",
+        },
       },
     },
     ft = { "markdown" },
