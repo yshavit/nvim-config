@@ -12,6 +12,12 @@ map("v", "<Tab>", "g^", { desc = "Go to first non-blank character" })
 map("n", ";", "g$", { desc = "Go to end of line" })
 map("v", ";", "g$", { desc = "Go to end of line" })
 
+-- Manually insert quote pairs, since I've disabled them in mini-pairs.lua
+-- For now, I'm disabling these altogether, and will just type quotes manually. I'm keeping these in case I want them later.
+-- map("i", "'' ", "''<Left>", { desc = "Insert '' pair" })
+-- map("i", '"" ', '""<Left>', { desc = 'Insert "" pair' })
+-- map("i", "`` ", "``<Left>", { desc = "Insert `` pair" })
+
 -- In insert mode, Alt+- types an em dash
 vim.keymap.set("i", "<M-->", "—", { desc = "Insert em dash" })
 
