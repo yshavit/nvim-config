@@ -13,7 +13,7 @@ return {
         width = "full",
         conceal_delimiters = false,
         langage_pad = 2,
-        language_border = "▄",
+        language_border = "█",
         language_right = "██",
         border = "thin",
       },
