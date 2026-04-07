@@ -14,6 +14,7 @@ return {
         conceal_delimiters = false,
         langage_pad = 2,
         language_border = "█",
+        language_left = "█",
         language_right = "██",
         border = "thin",
       },
