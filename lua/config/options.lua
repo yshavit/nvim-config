@@ -6,7 +6,28 @@ vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add,./spell/loc
 vim.o.showcmd = false
 
 vim.opt.clipboard = "unnamedplus"
-if vim.fn.has("wsl") == 1 then
+if vim.fn.has("win32") == 1 then
+  -- Neovim auto-detects `win32yank.exe` on $PATH, but if it resolves to the
+  -- chocolatey shim it pops up a console window on every yank/paste. Pin the
+  -- provider to the win32yank that ships alongside nvim.exe.
+  local win32yank = vim.fn.fnamemodify(vim.v.progpath, ":h") .. "\\win32yank.exe"
+  if vim.fn.executable(win32yank) == 0 then
+    -- Fall back to whatever is on $PATH if the bundled copy isn't there.
+    win32yank = "win32yank.exe"
+  end
+  vim.g.clipboard = {
+    name = "win32yank",
+    copy = {
+      ["+"] = { win32yank, "-i", "--crlf" },
+      ["*"] = { win32yank, "-i", "--crlf" },
+    },
+    paste = {
+      ["+"] = { win32yank, "-o", "--lf" },
+      ["*"] = { win32yank, "-o", "--lf" },
+    },
+    cache_enabled = false,
+  }
+elseif vim.fn.has("wsl") == 1 then
   -- Don't use unnamedplus. Instead, use native nvim buffers, and then sync
   -- to and from the windows clipboard on nvim [un]focus.
   vim.opt.clipboard = ""
