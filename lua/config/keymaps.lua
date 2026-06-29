@@ -5,12 +5,12 @@
 local map = vim.keymap.set
 
 -- Map Tab to ^ (first non-blank character) in normal and visual mode, using screen lines (factoring in soft wrapping)
-map("n", "<Tab>", "g^", { desc = "Go to first non-blank character" })
-map("v", "<Tab>", "g^", { desc = "Go to first non-blank character" })
+map("n", "<Tab>", "^", { desc = "Go to first non-blank character" })
+map("v", "<Tab>", "^", { desc = "Go to first non-blank character" })
 
 -- Map ; to $ (end of line) in normal and visual mode
-map("n", ";", "g$", { desc = "Go to end of line" })
-map("v", ";", "g$", { desc = "Go to end of line" })
+map("n", ";", "$", { desc = "Go to end of line" })
+map("v", ";", "$", { desc = "Go to end of line" })
 
 -- Manually insert quote pairs, since I've disabled them in mini-pairs.lua
 -- For now, I'm disabling these altogether, and will just type quotes manually. I'm keeping these in case I want them later.
