@@ -1,5 +1,3 @@
-local Job = require("plenary.job")
-
 -- TTLs in seconds
 local LOCAL_TTL = 60
 local FETCH_TTL = 60 * 60
@@ -16,6 +14,7 @@ local config_dir = vim.fn.stdpath("config")
 local header = " nvim config "
 
 local function fetch_origin()
+  local Job = require("plenary.job")
   Job:new({
     command = "git",
     args = { "-C", config_dir, "fetch" },
@@ -49,6 +48,7 @@ end
 
 -- async check git status (single call)
 local function update_local_status()
+  local Job = require("plenary.job")
   Job:new({
     command = "git",
     args = { "-C", config_dir, "status", "--porcelain=v2", "--branch" },
