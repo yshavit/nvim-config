@@ -4,6 +4,7 @@ return {
     opts = {
       linters = {
         ["markdownlint-cli2"] = {
+          -- Note: markdown diagnostics are disabled by default. See autocmds.lua
           prepend_args = { "--config", vim.fn.expand("~/.config/nvim/markdownlint.json") },
         },
       },
