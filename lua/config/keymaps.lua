@@ -7,6 +7,9 @@ local map = vim.keymap.set
 -- Map Tab to ^ (first non-blank character) in normal and visual mode, using screen lines (factoring in soft wrapping)
 map("n", "<Tab>", "^", { desc = "Go to first non-blank character" })
 map("v", "<Tab>", "^", { desc = "Go to first non-blank character" })
+-- ...and shift-Tab to `0`
+map("n", "<S-Tab>", "0", { desc = "Go to beginning of line" })
+map("v", "<S-Tab>", "0", { desc = "Go to beginning of line" })
 
 -- Map ; to $ (end of line) in normal and visual mode
 map("n", ";", "$", { desc = "Go to end of line" })
