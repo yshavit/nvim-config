@@ -15,6 +15,7 @@ vim.api.nvim_create_user_command("Scratch", function(opts)
   vim.cmd("setlocal buftype=nowrite")
   vim.cmd("setlocal bufhidden=hide")
   vim.cmd("setlocal noswapfile")
+  vim.cmd("startinsert")
 end, { nargs = "?", desc = "Create a new scratch buffer" })
 
 vim.api.nvim_create_user_command("VScratch", function(opts)
@@ -27,6 +28,7 @@ vim.api.nvim_create_user_command("VScratch", function(opts)
   vim.cmd("setlocal buftype=nowrite")
   vim.cmd("setlocal bufhidden=hide")
   vim.cmd("setlocal noswapfile")
+  vim.cmd("startinsert")
 end, { nargs = "?", desc = "Create a new scratch buffer in vertical split" })
 
 -- Memdiff
