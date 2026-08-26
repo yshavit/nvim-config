@@ -6,11 +6,6 @@ tokenizer
 TODO
 tl;dr
 unicode
-SIEM
-CTE
-backends
-DataFusion
-multivalue
 backend
-datasource
-CIDR
+backends
+multivalue
