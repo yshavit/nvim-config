@@ -61,3 +61,11 @@ elseif vim.fn.has("wsl") == 1 then
     end,
   })
 end
+
+-- Round corners for box digraphs
+vim.fn.digraph_setlist({
+  { "dl", "╮" },
+  { "ul", "╯" },
+  { "dr", "╭" },
+  { "ur", "╰" },
+})
