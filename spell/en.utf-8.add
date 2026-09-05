@@ -10,3 +10,9 @@ backend
 backends
 multivalue
 tradeoffs
+PostgreSQL
+webhook
+JSONB
+SQS
+AWS
+SIEM
