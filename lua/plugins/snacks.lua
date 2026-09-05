@@ -1,6 +1,27 @@
+local msys2_shell = "C:/msys64/msys2_shell.cmd"
+local msys2_zsh = "C:/msys64/usr/bin/zsh.exe"
+local terminal
+
+if vim.fn.has("win32") == 1 and vim.uv.fs_stat(msys2_shell) and vim.uv.fs_stat(msys2_zsh) then
+  terminal = {
+    shell = {
+      "cmd.exe",
+      "/c",
+      msys2_shell,
+      "-defterm",
+      "-here",
+      "-no-start",
+      "-ucrt64",
+      "-shell",
+      "zsh",
+    },
+  }
+end
+
 return {
   "folke/snacks.nvim",
   opts = {
+    terminal = terminal,
     picker = {
       sources = {
         explorer = {
