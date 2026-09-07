@@ -9,4 +9,16 @@
 require("config.lazy")
 require("config.commands") -- my custom commands
 
+-- Draw window separators as connected double lines. Separators always occupy
+-- one screen row or column; these glyphs control their strokes and junctions.
+vim.opt.fillchars:append({
+  vert = "║",
+  horiz = "═",
+  horizup = "╩",
+  horizdown = "╦",
+  vertleft = "╣",
+  vertright = "╠",
+  verthoriz = "╬",
+})
+
 vim.opt.conceallevel = 1
