@@ -2,8 +2,12 @@ return {
   "folke/snacks.nvim",
   opts = {
     picker = {
+      hidden = true,
       sources = {
         explorer = {
+          files = {
+            hidden = true,
+          },
           -- Define custom action
           actions = {
             explorer_yank_relative = function(picker)
