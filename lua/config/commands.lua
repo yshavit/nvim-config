@@ -39,3 +39,58 @@ vim.api.nvim_create_user_command("Memdiff", function()
   vim.cmd("diffthis")
   vim.cmd("wincmd h") -- Move cursor to left window
 end, { desc = "Diff current buffer against a new scratch buffer" })
+
+-- BetterTerm layout commands. See lua/plugins/betterterm.lua for the complete reference.
+-- These preserve terminal buffers and their running jobs;
+-- only the terminal window is recreated with the selected layout.
+local function set_betterterm_layout(layout)
+  local betterterm = require("betterTerm")
+  betterterm.setup(layout)
+
+  if vim.bo.filetype == "better_term" then
+    local name = vim.fn.bufname()
+    betterterm.open(name) -- hide the active terminal window
+    betterterm.open(name) -- recreate it with the new layout
+  else
+    betterterm.open()
+  end
+end
+
+local function split_layout(position, size)
+  return function()
+    set_betterterm_layout({ display = "split", position = position, size = size() })
+  end
+end
+
+-- BetterTerm inserts `position` directly before `:sbuffer`; use complete Ex
+-- modifiers rather than its documented left/right shorthands (e.g. `right sb`)
+-- which Neovim parses as the unrelated `:right` command.
+local function horizontal_size()
+  return math.floor(vim.o.lines / 2)
+end
+local function vertical_size()
+  return math.floor(vim.o.columns * 0.4)
+end
+vim.api.nvim_create_user_command(
+  "TermLeft",
+  split_layout("topleft vertical", vertical_size),
+  { desc = "Move BetterTerm left", force = true }
+)
+vim.api.nvim_create_user_command(
+  "TermBottom",
+  split_layout("botright", horizontal_size),
+  { desc = "Move BetterTerm to the bottom", force = true }
+)
+vim.api.nvim_create_user_command(
+  "TermTop",
+  split_layout("topleft", horizontal_size),
+  { desc = "Move BetterTerm to the top", force = true }
+)
+vim.api.nvim_create_user_command(
+  "TermRight",
+  split_layout("botright vertical", vertical_size),
+  { desc = "Move BetterTerm right", force = true }
+)
+vim.api.nvim_create_user_command("TermFloat", function()
+  set_betterterm_layout({ display = "float" })
+end, { desc = "Float BetterTerm", force = true })
