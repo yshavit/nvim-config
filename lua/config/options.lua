@@ -69,3 +69,5 @@ vim.fn.digraph_setlist({
   { "dr", "╭" },
   { "ur", "╰" },
 })
+
+vim.diagnostic.config({ float = { border = "double" } })
