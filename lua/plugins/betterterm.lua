@@ -18,7 +18,7 @@ return {
   opts = {
     prefix = "",
     bufname_format = function(prefix, index)
-      return prefix .. " " .. index
+      return index .. "）" .. prefix
     end,
     new_tab_mapping = "<C-t>",
   },
