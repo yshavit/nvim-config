@@ -1,5 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
+  dependencies = { "hrsh7th/cmp-emoji" },
   opts = function(_, opts)
     local cmp = require("cmp")
 
@@ -9,6 +10,8 @@ return {
       fallback()
     end)
     -- Shift+Tab accepts the selected item, or the first available suggestion.
-    opts.mapping["<S-Tab>"] = cmp.mapping.confirm({ select = true })
+    opts.mapping["<C-Space>"] = cmp.mapping.confirm({ select = true })
+
+    table.insert(opts.sources, { name = "emoji" })
   end,
 }
